@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "WebWorker"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "@E2E": ["apps/showcases-e2e/src/index.ts"],
+      "@E2E/*": ["apps/showcases-e2e/src/*"],
+      "@Menu": ["packages/showcases-menu/src/index.ts"],
+      "@Menu/*": ["packages/showcases-menu/src/*"],
+      "@GUI": ["packages/showcases-gui/src/index.ts"],
+      "@GUI/*": ["packages/showcases-gui/src/*"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "ESNext",
+    "types": ["node", "vite/client", "three", "vitest/importMeta", "vitest/globals"],
+    "useDefineForClassFields": true
+  },
+  "include": ["vite.config.ts"]
+}
