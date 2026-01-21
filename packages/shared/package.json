@@ -15,7 +15,7 @@
   },
   "sideEffects": false,
   "license": "MIT",
-  "description": "Is-Watching Shared – a shared library for Is-Watching game.",
+  "description": "Is-Watching game Shared – a shared library for Is-Watching game.",
   "keywords": [
     "anarkids",
     "is-watching",
