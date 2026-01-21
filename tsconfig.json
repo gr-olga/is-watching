@@ -13,12 +13,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "@E2E": ["apps/showcases-e2e/src/index.ts"],
-      "@E2E/*": ["apps/showcases-e2e/src/*"],
-      "@Menu": ["packages/showcases-menu/src/index.ts"],
-      "@Menu/*": ["packages/showcases-menu/src/*"],
-      "@GUI": ["packages/showcases-gui/src/index.ts"],
-      "@GUI/*": ["packages/showcases-gui/src/*"]
+      "@E2E": ["apps/e2e/src/index.ts"],
+      "@E2E/*": ["apps/e2e/src/*"],
+      "@Menu": ["packages/menu/src/index.ts"],
+      "@Menu/*": ["packages/menu/src/*"],
+      "@GUI": ["packages/gui/src/index.ts"],
+      "@GUI/*": ["packages/gui/src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
