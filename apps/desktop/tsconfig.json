@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@Desktop/*": ["apps/desktop/src/*"],
+      "@Shared": ["packages/shared/src/index.ts"],
+      "@Shared/*": ["packages/shared/src/*"],
+      "@I18N": ["packages/i18n/src/index.ts"],
+      "@I18N/*": ["packages/i18n/src/*"]
+    },
+    "sourceMap": false,
+    "noEmit": false
+  },
+  "include": ["src/desktop-main.ts", "preload.ts", "types"],
+  "exclude": ["dist", "node_modules"]
+}
