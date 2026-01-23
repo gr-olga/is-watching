@@ -1,0 +1,11 @@
+import { InitialLocale, GameFallbackLocale } from '@I18N/Constants';
+import type { I18n } from 'vue-i18n';
+import { createI18n } from 'vue-i18n';
+
+export function initVueI18n(): I18n {
+  return createI18n({
+    legacy: false,
+    locale: InitialLocale.id,
+    fallbackLocale: GameFallbackLocale.id
+  });
+}
