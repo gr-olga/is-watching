@@ -1,0 +1,57 @@
+import { isAllNotDefined, isDefined, isNotDefined, isObject, isString } from '@Anarchy/Shared/Utils';
+import { GameLocales } from '@I18N/Constants';
+import type { TLegalDoc, TLoadDocPayload, TGameSettings } from '@Shared/Models';
+
+export function isSettings(settings: TGameSettings | unknown): settings is TGameSettings {
+  if (isNotDefined(settings)) return false;
+  if (typeof settings !== 'object') return false;
+  const { graphics, localization, debug, internal, audio } = settings as TGameSettings;
+  if (isAllNotDefined([graphics, audio, localization, debug, internal])) return false;
+
+  return true;
+}
+
+export function hasJsonStructure(str: string | Record<string, any> | Array<any> | unknown): boolean {
+  const val = isObject(str) || Array.isArray(str) ? JSON.stringify(str) : str;
+  if (typeof val !== 'string') return false;
+
+  try {
+    const result = JSON.parse(val);
+    const type: string = Object.prototype.toString.call(result);
+    return type === '[object Object]' || type === '[object Array]';
+  } catch {
+    return false;
+  }
+}
+
+export function isPartialSettings(settings: TGameSettings | unknown): settings is Partial<TGameSettings> {
+  if (isNotDefined(settings)) return false;
+  if (typeof settings !== 'object') return false;
+  if (isSettings(settings)) return true;
+  const { graphics, localization, debug, internal, audio } = settings as Partial<TGameSettings>;
+  if (isDefined(graphics) || isDefined(audio) || isDefined(localization) || isDefined(debug) || isDefined(internal)) return true;
+
+  return false;
+}
+
+export function isLoadDocPayload(payload: TLoadDocPayload | unknown): payload is TLoadDocPayload {
+  if (isNotDefined(payload)) return false;
+  if (typeof payload !== 'object') return false;
+  const { name, locale } = payload as TLoadDocPayload;
+  if (isAllNotDefined([name])) return false;
+  if (!isString(name)) return false;
+  if (isDefined(locale) && isNotDefined(GameLocales[locale])) return false;
+
+  return true;
+}
+
+export function isLoadDoc(doc: TLegalDoc | unknown): doc is TLegalDoc {
+  if (isNotDefined(doc)) return false;
+  if (typeof doc !== 'object') return false;
+  const { name, content } = doc as TLegalDoc;
+  if (isAllNotDefined([name])) return false;
+  if (!isString(name)) return false;
+  if (!isString(content)) return false;
+
+  return true;
+}
