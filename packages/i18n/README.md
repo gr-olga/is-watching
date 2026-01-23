@@ -1,6 +1,6 @@
-# Anarchy engine showcases-i18n package
+# Is Watching game i18n package
 
-Translation (i18n) library for the Anarchy engine showcases app.
+Translation (i18n) library for the Is Watching game.
 
 ## License
 

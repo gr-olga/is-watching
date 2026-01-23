@@ -1,6 +1,6 @@
-# Anarchy-Showcases E2E
+# Is Watching game E2E
 
-E2E tests (for Showcases app of the Anarchy engine).
+E2E tests.
 
 ## License
 

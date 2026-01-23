@@ -1,6 +1,6 @@
-# Anarchy-Showcases
+# Is Watching game
 
-Showcases for the Anarchy engine.
+Is Watching game based on Anarchy engine.
 
 ## License
 

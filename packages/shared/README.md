@@ -1,6 +1,6 @@
-# Anarchy engine showcases-shared package
+# Is Watching game shared package
 
-Shared utilities and types for the Anarchy engine showcases app.
+Shared utilities and types for the Is Watching game.
 
 ## License
 

@@ -1,6 +1,4 @@
-# Anarchy engine showcases-shared package
-
-UI menu for showcases of Anarchy engine.
+# UI menu for Is Watching game.
 
 ## License
 

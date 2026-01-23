@@ -19,7 +19,7 @@
     "anarkids",
     "is-watching",
     "is-watching-web"
-   ],
+  ],
   "files": [
     "./legal/**",
     "CHANGELOG.md",
@@ -65,10 +65,10 @@
     "lil-gui": "0.21.0",
     "rxjs": "7.8.2",
     "sanitize.css": "13.0.0",
-    "showcases-gui": "*",
-    "showcases-i18n": "*",
-    "showcases-menu": "*",
-    "showcases-shared": "*",
+    "gui": "*",
+    "i18n": "*",
+    "menu": "*",
+    "shared": "*",
     "stats.js": "0.17.0",
     "three-viewport-gizmo": "2.2.0"
   },

@@ -11,14 +11,10 @@ import vue from '@vitejs/plugin-vue';
 // @ts-expect-error: no type declarations
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { version } from './package.json';
-import { version as engineVersion } from '../../packages/anarchy-engine/package.json';
-import { version as anarchySharedVersion } from '../../packages/anarchy-shared/package.json';
-import { version as anarchyI18nVersion } from '../../packages/anarchy-i18n/package.json';
-import { version as anarchyLegalVersion } from '../../packages/anarchy-legal/package.json';
-import { version as showcasesI18nVersion } from '../../packages/showcases-i18n/package.json';
-import { version as showcasesMenuVersion } from '../../packages/showcases-menu/package.json';
-import { version as showcasesGuiVersion } from '../../packages/showcases-gui/package.json';
-import { version as showcasesSharedVersion } from '../../packages/showcases-shared/package.json';
+import { version as i18nVersion } from '../../packages/i18n/package.json';
+import { version as menuVersion } from '../../packages/menu/package.json';
+import { version as guiVersion } from '../../packages/gui/package.json';
+import { version as sharedVersion } from '../../packages/shared/package.json';
 import { emitDefineJson } from '../../packages/anarchy-shared/src/Plugins/EmitDefineVitePlugin';
 import csp from 'vite-plugin-csp-guard';
 import { BASE_CSP, DESKTOP_CSP, TCspRulles } from '../../configs/Security/Csp/CspConfig';
@@ -37,15 +33,15 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
   const sourcemap: boolean = toBool(VITE_BUILD_SOURCEMAPS);
 
   const buildMetaInfo = {
-    'web': version,
+    web: version,
     'anarchy-engine': engineVersion,
     'anarchy-shared': anarchySharedVersion,
     'anarchy-i18n': anarchyI18nVersion,
     'anarchy-legal': anarchyLegalVersion,
-    'showcases-i18n': showcasesI18nVersion,
-    'showcases-menu': showcasesMenuVersion,
-    'showcases-gui': showcasesGuiVersion,
-    'showcases-shared': showcasesSharedVersion
+    i18n: i18nVersion,
+    menu: menuVersion,
+    gui: guiVersion,
+    shared: sharedVersion
   };
 
   function getCspRules(platform: string): TCspRulles {
@@ -72,7 +68,7 @@ export default defineConfig(({ mode, command }: ConfigEnv): UserConfig => {
         ...sharedAliases,
         '@': path.resolve(__dirname, './src'),
         '@Public': path.resolve(__dirname, './public'),
-        '@Showcases/Shared': path.resolve(__dirname, '../../packages/showcases-shared/src'),
+        '@Shared': path.resolve(__dirname, '../../packages/shared/src'),
 
         //Virtual modules for platform API
         'platform:api': path.resolve(__dirname, `./src/Platform/Drivers/${VITE_BUILD_PLATFORM ?? 'web'}.ts`)
