@@ -1,0 +1,60 @@
+<script setup lang="ts">
+import { isNotDefined } from '@Anarchy/Shared/Utils';
+import type { TGameLocaleIds } from '@I18N';
+import MdRenderer from '@Menu/components/MdRenderer.vue';
+import Navigation from '@Menu/components/Navigation/Navigation.vue';
+import View from '@Menu/components/View.vue';
+import ViewForm from '@Menu/components/ViewForm.vue';
+import { eventsEmitterService } from '@Menu/services';
+import { useLegalDocsStore } from '@Menu/stores/LegalDocsStore';
+import { useSettingsStore } from '@Menu/stores/SettingsStore';
+import { AllowedLegalDocNames } from '@Shared';
+import { onMounted } from 'vue';
+
+const { DISCLAIMER, EULA, NOTICE, SUPPORT, PRIVACY, SECURITY, THIRD_PARTY_LICENSES } = AllowedLegalDocNames;
+const legalDocsStore = useLegalDocsStore();
+const settingsStore = useSettingsStore();
+
+// TODO LEGAL: change legal folders to /legal/{locale} (also public/legal/{locale}, assets/legal/{locale})
+onMounted(() => {
+  const locale = settingsStore.localization.locale.id as TGameLocaleIds;
+
+  if (isNotDefined(legalDocsStore.translatedDisclaimer)) eventsEmitterService.emitGetLegalDocs({ name: DISCLAIMER, locale });
+  if (isNotDefined(legalDocsStore.translatedEula)) eventsEmitterService.emitGetLegalDocs({ name: EULA, locale });
+  if (isNotDefined(legalDocsStore.translatedPrivacy)) eventsEmitterService.emitGetLegalDocs({ name: PRIVACY, locale });
+  if (isNotDefined(legalDocsStore.translatedNotice)) eventsEmitterService.emitGetLegalDocs({ name: NOTICE, locale });
+  if (isNotDefined(legalDocsStore.translatedSupport)) eventsEmitterService.emitGetLegalDocs({ name: SUPPORT, locale });
+  if (isNotDefined(legalDocsStore.translatedSecurity)) eventsEmitterService.emitGetLegalDocs({ name: SECURITY, locale });
+  if (isNotDefined(legalDocsStore.translatedThirdPartyLicenses)) eventsEmitterService.emitGetLegalDocs({ name: THIRD_PARTY_LICENSES, locale });
+});
+</script>
+
+<template>
+  <View class="legal" :title="$t('main-menu.settings.legal.view.title')">
+    <ViewForm name="legal" class="legal__view-form">
+      <MdRenderer class="legal__renderer -DISCLAIMER" :content="legalDocsStore.translatedDisclaimer" />
+      <MdRenderer class="legal__renderer -EULA" :content="legalDocsStore.translatedEula" />
+      <MdRenderer class="legal__renderer -PRIVACY" :content="legalDocsStore.translatedPrivacy" />
+      <MdRenderer class="legal__renderer -NOTICE" :content="legalDocsStore.translatedNotice" />
+      <MdRenderer class="legal__renderer -SUPPORT" :content="legalDocsStore.translatedSupport" />
+      <MdRenderer class="legal__renderer -SECURITY" :content="legalDocsStore.translatedSecurity" />
+      <MdRenderer class="legal__renderer -THIRD_PARTY_LICENSES" :content="legalDocsStore.translatedThirdPartyLicenses" />
+      <Navigation class="settings__navigation" :back-btn="true" />
+    </ViewForm>
+  </View>
+</template>
+
+<style lang="scss">
+.legal {
+  max-width: min(900px, 90vw);
+
+  &__renderer {
+    max-height: 80vh;
+    overflow-y: auto;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 3px;
+    border: 1px solid rgb(0 0 0 / 30%);
+  }
+}
+</style>
